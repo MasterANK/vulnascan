@@ -1,0 +1,67 @@
+{
+  "name": "vulnascan",
+  "displayName": "VulnaScan",
+  "description": "Scans Vulnaribilities of a code using AI",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vulnascan",
+          "title": "VulnaScan Report",
+          "icon": "resources/vulnascan_ICON2.png"
+        }
+      ]
+    },
+    "views": {
+      "vulnascan": [
+        {
+          "id": "vulnascan.View",
+          "name": "",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vulnascan.helloWorld",
+        "category": "VulnaScan",
+        "title": "Hello World"
+      },
+      {
+        "command": "vulnascan.askForApiKey",
+        "category": "VulnaScan",
+        "title": "Set API"
+      },
+      {
+        "command": "vulnascan.getApiKey",
+        "category": "VulnaScan",
+        "title": "Show API"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.93.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.9.1"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.17.2"
+  }
+}

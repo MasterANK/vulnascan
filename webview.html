@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Sidebar</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 10px;
+            }
+            .ScanItem{
+                padding: 10px;
+                border: 3px solid red;
+                border-radius: 20px;
+            }
+            .ScanItem-Holder{
+                padding: 10px;
+            }
+            .btn {
+                background: #3498db;
+                background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+                background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+                background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+                background-image: -o-linear-gradient(top, #3498db, #2980b9);
+                background-image: linear-gradient(to bottom, #3498db, #2980b9);
+                -webkit-border-radius: 19;
+                -moz-border-radius: 19;
+                border-radius: 19px;
+                font-family: Courier New;
+                color: #ffffff;
+                font-size: 27px;
+                padding: 10px 40px 10px 40px;
+                text-decoration: none;
+            }
+            .btn:hover {
+                background: #3cb0fd;
+                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Vulnaribility Scan</h1>
+        <button id="myButton" class="btn">Scan Code</button>
+
+        <h2 id="vulnaCount"></h2>
+
+        <div id="ShowResult" class="ScanItem-Holder"></div>
+        <script>
+        const vscode = acquireVsCodeApi();
+        document.getElementById('myButton').addEventListener('click', () => {
+        vscode.postMessage({ command: 'runScan' });
+        });
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+
+            if (message.command == "sendresult"){
+                const ScanData = message.data;
+                const errorListDiv = document.getElementById('ShowResult');
+                const errorLenDiv = document.getElementById('vulnaCount');
+                const errorlen = ScanData.length;
+
+                while (errorListDiv.firstChild) {
+                    errorListDiv.removeChild(errorListDiv.firstChild);
+                }
+
+                if(errorlen > 0){
+                    errorLenDiv.innerHTML = "Vulnaribility Count : " + errorlen;
+                } else{
+                    errorLenDiv.innerHTML = "No Vulnaribility Found";
+                }
+
+                ScanData.forEach(element => {
+                    const errorItemDiv = document.createElement('div');
+                    errorItemDiv.classList.add('ScanItem');
+                    errorItemDiv.innerHTML = `<strong>Error:</strong> ${element.Error} <br> <strong>Location:</strong> ${element.Location}`;
+                    errorListDiv.appendChild(errorItemDiv);
+                });
+            }
+        });
+        </script>
+    </body>
+</html>

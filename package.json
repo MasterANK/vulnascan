@@ -42,9 +42,9 @@
         "title": "Set API"
       },
       {
-        "command": "vulnascan.getApiKey",
+        "command": "vulnascan.runscan",
         "category": "VulnaScan",
-        "title": "Show API"
+        "title": "Run Scan"
       }
     ]
   },

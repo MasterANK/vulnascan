@@ -78,7 +78,6 @@ async function checkAPI(key){
         - "Location" (the line number where it occurs)
         - "Fix" (how to fix the vulnerability)
         - "Impact" (the potential impact of the vulnerability)
-        - "Function" (the function or method where the vulnerability occurs)
         - "Severity" (the severity level: Low, Medium, High)
 
         Do not include any explanation or additional commentary. Example format:
@@ -89,7 +88,6 @@ async function checkAPI(key){
                 "Location": "Line 6",
                 "Fix": "Use environment variables to store API keys",
                 "Impact": "Potential unauthorized access to API",
-                "Function": "get_api_key",
                 "Severity": "High"
             },
             {
@@ -97,7 +95,6 @@ async function checkAPI(key){
                 "Location": "Line 10",
                 "Fix": "Use parameterized queries or prepared statements",
                 "Impact": "Unauthorized data access or manipulation",
-                "Function": "execute_query",
                 "Severity": "High"
             }
         ]

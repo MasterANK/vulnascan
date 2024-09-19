@@ -79,7 +79,12 @@
                 ScanData.forEach(element => {
                     const errorItemDiv = document.createElement('div');
                     errorItemDiv.classList.add('ScanItem');
-                    errorItemDiv.innerHTML = `<strong>Error:</strong> ${element.Error} <br> <strong>Location:</strong> ${element.Location}`;
+                    errorItemDiv.innerHTML = `
+                    <strong>Error:</strong> ${element.Error} <br> 
+                    <strong>Location:</strong> ${element.Location} <br>
+                    <strong>Fix:</strong> ${element.Fix} <br>
+                    <strong>Impact:</strong> ${element.Impact} <br>
+                    <strong>Severity:</strong> ${element.Severity} <br>`;
                     errorListDiv.appendChild(errorItemDiv);
                 });
             }

@@ -200,7 +200,6 @@ class MyViewProvider {
 	async runYourScan() {
 		const geminidata = await runscan();
 		if (geminidata){
-			console.log(geminidata.trim());
 			if(geminidata.trim() !== "[]" ){
 				const jsonData = JSON.parse(geminidata.slice(7,-3));
 				return jsonData;

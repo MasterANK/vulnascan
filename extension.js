@@ -72,7 +72,7 @@ async function checkAPI(key){
 		model = genAI.getGenerativeModel({
 			model: "gemini-1.5-flash",
 			systemInstruction: `
-			You are an expert in code security analysis. Analyze the following Python code and detect any vulnerabilities such as API key exposure, SQL injection, or other security risks. Return a JSON array with each vulnerability found, including:
+			You are an expert in code security analysis. Analyze the following code and detect any vulnerabilities such as API key exposure, SQL injection, or other security risks. Return a JSON array with each vulnerability found, including:
 
         - "Error" (the type of vulnerability)
         - "Location" (the line number where it occurs)
@@ -98,7 +98,8 @@ async function checkAPI(key){
                 "Severity": "High"
             }
         ]
-			`
+		Returns an empty JSON when no vulnaribility is found. Dont Give vulnaribility when youre unsure.
+		`
 		});
 		
 		const chatSession = model.startChat({

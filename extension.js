@@ -200,8 +200,14 @@ class MyViewProvider {
 	async runYourScan() {
 		const geminidata = await runscan();
 		if (geminidata){
-			const jsonData = JSON.parse(geminidata.slice(7,-3));
-			return jsonData;
+			console.log(geminidata.trim());
+			if(geminidata.trim() !== "[]" ){
+				const jsonData = JSON.parse(geminidata.slice(7,-3));
+				return jsonData;
+			} else {
+				const jsonData = JSON.parse(geminidata);
+				return jsonData;
+			}
 		} else{
 			console.log("no SCAN RESULT data error");
 		}

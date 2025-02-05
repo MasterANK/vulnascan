@@ -27,7 +27,7 @@ function activate(context) {
 	console.log("Extension Begin");
 
 	const disposable = vscode.commands.registerCommand('vulnascan.helloWorld', function () {
-		vscode.window.showInformationMessage('Hello World from VulnaScan!');
+		vscode.window.showInformationMessage('Hello World from VulnaScan! \n Version: 1.0.1');
 	});
 
 	let disposablekey = vscode.commands.registerCommand('vulnascan.askForApiKey', async () => {

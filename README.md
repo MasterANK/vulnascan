@@ -4,32 +4,28 @@ VulnaScan is the Vscode extension that makes use of API to scan the given code f
 
 ## Features
 
-Detects Vulnaribility in Code.
+- Detects Vulnaribility in Code. 
+- One Stops Solutions for API key Leaks
+- GUI based interface for easy use within VScode
 
-Stops API key Leaks
 
 ## Requirements
 
-____
+Google Gemini API key 
+- Get your from the gemini website for free https://aistudio.google.com/prompts/new_chat?gad_source=1&gclid=CjwKCAiAtYy9BhBcEiwANWQQL0ZTtHKkJqHq5YxbVbHKB4RZScRK26O4J_MgjSO_eSAYGdvMe8P-IxoCAV0QAvD_BwE
 
-## Extension Settings
+Set the acquired api key using `VulnaScan : Set API` command in vscode using `ctrl+shift+p`
 
-____
+## Extension Commands
 
-For example:
+`VulnaScan : Hello World` : used to check extension and its version \
+`VulnaScan : Set API` : Used to set the Gemini API \
+`VulnaScan : Run Scan` : Used to run code scan from Command pallet
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-NONE
 
 ## Release Notes
 
-Alpha Phase
+V1.0.1 : Base Release
 
 ## Dev Team
 Ankit Aggarwal (MasterANK)

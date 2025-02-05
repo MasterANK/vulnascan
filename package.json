@@ -3,6 +3,7 @@
   "publisher": "VulnaScan",
   "displayName": "VulnaScan",
   "description": "Scans Vulnaribilities of a code using AI",
+  "icon": "resources/vulnascan_ICON2.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"

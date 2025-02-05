@@ -1,5 +1,6 @@
 {
   "name": "vulnascan",
+  "publisher": "VulnaScan",
   "displayName": "VulnaScan",
   "description": "Scans Vulnaribilities of a code using AI",
   "version": "0.0.1",
@@ -47,7 +48,9 @@
         "title": "Run Scan"
       }
     ]
-  },
+  },"repository": {
+    "type": "git",
+    "url": "https://github.com/MasterANK/vulnascan"},
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
@@ -62,6 +65,7 @@
     "eslint": "^9.9.1"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.17.2"
+    "@google/generative-ai": "^0.17.2",
+    "@vscode/vsce": "^3.2.2"
   }
 }

@@ -49,7 +49,7 @@ function activate(context) {
 	});
 
 	let getApiKey = vscode.commands.registerCommand('vulnascan.runscan', async () => {
-		runYourScan();
+		runscan();
 	});
 
 	context.subscriptions.push(disposable);
@@ -156,10 +156,13 @@ async function runscan() {
 	  history: [
 	  ],
 	});
-  
-	const result = await chatSession.sendMessage(code);
-	vscode.window.showInformationMessage('Done');
-	return result.response.text();
+	try{
+		const result = await chatSession.sendMessage(code);
+		vscode.window.showInformationMessage('Done');
+		return result.response.text();
+	} catch(error){
+        vscode.window.showErrorMessage(error.message);
+	}
   }
 
 class MyViewProvider {
@@ -201,7 +204,7 @@ class MyViewProvider {
 		const geminidata = await runscan();
 		if (geminidata){
 			if(geminidata.trim() !== "[]" ){
-				const jsonData = JSON.parse(geminidata.slice(7,-3));
+				const jsonData = JSON.parse(geminidata.slice(7,-4));
 				return jsonData;
 			} else {
 				const jsonData = JSON.parse(geminidata);

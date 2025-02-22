@@ -4,7 +4,7 @@
   "displayName": "VulnaScan",
   "description": "Scans Vulnaribilities of a code using AI",
   "icon": "resources/vulnascan_ICON2.png",
-  "version": "1.0.1",
+  "version": "1.2",
   "engines": {
     "vscode": "^1.93.0"
   },

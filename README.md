@@ -24,10 +24,9 @@ Set the acquired api key using `VulnaScan : Set API` command in vscode using `ct
 
 
 ## Release Notes
+V1.0.2 : Patched Gemini New Request Protocol
 
 V1.0.1 : Base Release
 
 ## Dev Team
 Ankit Aggarwal (MasterANK)
-
-Jatin Garg

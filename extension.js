@@ -70,7 +70,7 @@ async function checkAPI(key){
 		}; 
 		
 		model = genAI.getGenerativeModel({
-			model: "gemini-1.5-flash",
+			model: "gemini-2.0-flash",
 			systemInstruction: `
 			You are an expert in code security analysis. Analyze the following code and detect any vulnerabilities such as API key exposure, SQL injection, or other security risks. Return a JSON array with each vulnerability found, including:
 

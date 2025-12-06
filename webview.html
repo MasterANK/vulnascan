@@ -1,84 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Sidebar</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-            body {
-                font-family: Arial, sans-serif;
-                padding: 10px;
-            }
-            .ScanItem {
-                padding: 10px;
-                background-color: #2c2c2c;
-                border-radius: 10px;
-                margin-bottom: 10px;
-                color: #ffffff;
-                font-family: "Montserrat", serif;
-                font-size: 16px;
-            }
 
-            .ScanItem-Holder {
-                padding: 10px;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sidebar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-            .btn {
-                background: #3498db;
-                background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-                background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-                background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-                background-image: -o-linear-gradient(top, #3498db, #2980b9);
-                background-image: linear-gradient(to bottom, #3498db, #2980b9);
-                -webkit-border-radius: 19;
-                -moz-border-radius: 19;
-                border-radius: 19px;
-                font-family: "Montserrat", serif;
-                color: #ffffff;
-                font-size: 25px;
-                padding: 10px 40px;
-                text-decoration: none;
-                font-weight: 500;
-            }
-            .btn:hover {
-                background: #3cb0fd;
-                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Vulnaribility Scan</h1>
-        <button id="myButton" class="btn">Scan Code</button>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+        }
 
-        <h2 id="vulnaCount"></h2>
+        .ScanItem {
+            padding: 10px;
+            background-color: var(--vscode-editor-background);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: var(--vscode-foreground);
+            font-family: "Montserrat", serif;
+            font-size: 16px;
+            border: 1px solid var(--vscode-foreground);
+        }
 
-        <div id="ShowResult" class="ScanItem-Holder">
-            <!-- Test Data Below -->
-            <!-- <div class="ScanItem">
+        .ScanItem-Holder {
+            padding: 10px;
+        }
+        h1{
+            font-family: "Montserrat", serif;
+            text-align: center;
+            display: block;
+
+        }
+        .css-button-sliding-to-left--black {
+            min-width: 130px;
+            height: 40px;
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            outline: none;
+            border-radius: 5px;
+            z-index: 0;
+            background: #ffffff00;
+            overflow: hidden;
+            border: 2px solid var(--vscode-foreground);
+            color: var(--vscode-foreground);
+        }
+
+        .css-button-sliding-to-left--black:hover {
+            color: #fff;
+        }
+
+        .css-button-sliding-to-left--black:hover:after {
+            width: 100%;
+        }
+
+        .css-button-sliding-to-left--black:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            transition: all 0.3s ease;
+            right: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: #212529;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vulnerability Scan</h1>
+    <button id="myButton" class="css-button-sliding-to-left--black">Scan Code</button>
+
+    <h2 id="vulnaCount"></h2>
+
+    <div id="ShowResult" class="ScanItem-Holder">
+        <!-- Test Data Below -->
+        <!-- <div class="ScanItem">
                 <strong>Error:</strong> Test Error <br> 
                 <strong>Location:</strong> Line 6 <br>
                 <strong>Fix:</strong> Suggested FIX <br>
                 <strong>Impact:</strong> Test Impact <br>
                 <strong>Severity:</strong> High <br>
             </div> -->
-            <!-- End of Test -->
-        </div>
-        <script>
+        <!-- End of Test -->
+    </div>
+    <script>
         const vscode = acquireVsCodeApi();
         document.getElementById('myButton').addEventListener('click', () => {
-        vscode.postMessage({ command: 'runScan' });
+            vscode.postMessage({ command: 'runScan' });
         });
 
         window.addEventListener('message', event => {
             const message = event.data;
 
-            if (message.command == "sendresult"){
+            if (message.command == "sendresult") {
                 const ScanData = message.data;
                 const errorListDiv = document.getElementById('ShowResult');
                 const errorLenDiv = document.getElementById('vulnaCount');
@@ -88,10 +111,10 @@
                     errorListDiv.removeChild(errorListDiv.firstChild);
                 }
 
-                if(errorlen > 0){
-                    errorLenDiv.innerHTML = "Vulnaribility Count : " + errorlen;
-                } else{
-                    errorLenDiv.innerHTML = "No Vulnaribility Found";
+                if (errorlen > 0) {
+                    errorLenDiv.innerHTML = "Vulnerability Count : " + errorlen;
+                } else {
+                    errorLenDiv.innerHTML = "No Vulnerability Found";
                 }
 
                 ScanData.forEach(element => {
@@ -107,6 +130,7 @@
                 });
             }
         });
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
